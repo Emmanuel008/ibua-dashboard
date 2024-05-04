@@ -1,7 +1,15 @@
 import React, {useState} from 'react'
 import axios from "axios"
+import { ToastContainer, toast } from "react-toastify";
 
 const ChangePassword = () => {
+    const toastOptions = {
+        position: "top-center",
+        autoClose: 8000,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+    };
     const [values, setValues] = useState({
         oldPassword: "",
         newPassword: "",
@@ -20,9 +28,10 @@ const ChangePassword = () => {
             await axios.put(`http://localhost:8085/users/changePassword/${user.user_id}`, { oldPassword, newPassword })
             .then(()=>{
                 setValues({ oldPassword: "", newPassword: "" })
+                toast.success("Successfull upload", toastOptions)
             })
         } catch (error) {
-            console.log(error.response)
+        toast.error(error.message, toastOptions);
         }
     }
     return (
@@ -87,6 +96,7 @@ const ChangePassword = () => {
                     </div>
                 </div>
             </section>
+            <ToastContainer />
         </div>
     )
 }

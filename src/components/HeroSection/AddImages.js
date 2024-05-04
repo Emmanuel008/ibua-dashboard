@@ -1,8 +1,16 @@
 import React, {useState} from 'react'
 import axios from "axios"
+import { ToastContainer, toast } from "react-toastify";
 import { url } from "../../utils/API"
 
 const AddImages = () => {
+  const toastOptions = {
+    position: "top-center",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
   const [values, setValues] = useState({
     image_title: "",
     image_description: ""
@@ -44,9 +52,10 @@ const AddImages = () => {
         })
         setImagePreview(null)
         setFile(null)
+        toast.success("Successfull upload", toastOptions)
       })
     } catch (error) {
-      console.log(error)
+      toast.error(error.message, toastOptions);
     }
     
 
@@ -125,6 +134,7 @@ const AddImages = () => {
           </div>
         </div>
       </section>
+      <ToastContainer />
     </div>
   )
 }

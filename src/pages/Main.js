@@ -1,9 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react'
 import axios from "axios"
 import {Link} from "react-router-dom"
+import { ToastContainer, toast } from "react-toastify";
 import {url} from "../utils/API"
 const Main = () => {
+    const toastOptions = {
+        position: "top-center",
+        autoClose: 8000,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+    };
     const [data, setData] = useState({
         faqs: [],
         updates: [],
@@ -26,14 +35,12 @@ const Main = () => {
                     images: imagesResponse.data
                 });
             } catch (error) {
-                console.error('Error fetching data: ', error);
+                toast.error(error.message, toastOptions);
             }
         };
 
         fetchData();
     }, []);
-
-    console.log(data)
     
     return (
         <div className='content-wrapper'>
@@ -83,9 +90,7 @@ const Main = () => {
                                 <Link to="/dashboard/imageList" className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></Link>
                             </div>
                         </div>
-                        {/* ./col */}
                         <div className="col-lg-3 col-6">
-                            {/* small box */}
                             <div className="small-box bg-warning">
                                 <div className="inner">
                                     <h3>{data.testimonies.data_amount}</h3>
@@ -97,9 +102,7 @@ const Main = () => {
                                 <Link to="/dashboard/view_testimonies" className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></Link>
                             </div>
                         </div>
-                        {/* ./col */}
                         <div className="col-lg-3 col-6">
-                            {/* small box */}
                             <div className="small-box bg-danger">
                                 <div className="inner">
                                     <h3>{data.faqs.data_amount}</h3>
@@ -111,11 +114,10 @@ const Main = () => {
                                 <Link to="/dashboard/faqsList" className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></Link>
                             </div>
                         </div>
-                        {/* ./col */}
                     </div>
-
                 </div>
             </section>
+            <ToastContainer />
         </div>
     )
 }

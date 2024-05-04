@@ -1,12 +1,21 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import "./updateList.css"
 import axios from "axios"
+import { ToastContainer, toast } from "react-toastify";
 import { url } from '../../utils/API'
 
 const UpdateList = () => {
+  const toastOptions = {
+    position: "top-center",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -17,7 +26,7 @@ const UpdateList = () => {
             setData(res.data)
           })
       } catch (error) {
-        console.log(error)
+        toast.error(error.message, toastOptions);
       }
     }
     fetchData()
@@ -73,7 +82,7 @@ const UpdateList = () => {
           </div>
         </div>
       </section>
-
+      <ToastContainer />
     </div>
   )
 }

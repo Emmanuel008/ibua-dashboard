@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 import { url } from "../../utils/API"
 
 const AddUpdate = () => {
@@ -12,6 +13,13 @@ const AddUpdate = () => {
   // const removeLinkFields = (rid) => {
   //   setRooms(prevRooms => prevRooms - 1);
   // };
+  const toastOptions = {
+    position: "top-center",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
 
   const [values, setValues] = useState({
     update_title: "",
@@ -58,9 +66,10 @@ const AddUpdate = () => {
           })
           // setImagePreview(null)
           setFile(null)
+          toast.success("Successfull upload", toastOptions)
         })
     } catch (error) {
-      console.log(error)
+      toast.error(error.message, toastOptions);
     }
   }
   return (
@@ -169,6 +178,7 @@ const AddUpdate = () => {
           </div>
         </div>
       </section>
+      <ToastContainer />
     </div>
   )
 }

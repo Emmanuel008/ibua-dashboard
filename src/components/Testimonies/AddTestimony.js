@@ -1,9 +1,18 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import { ToastContainer, toast } from "react-toastify";
+
 import { url } from "../../utils/API"
 
 
 const AddTestimony = () => {
+  const toastOptions = {
+    position: "top-center",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
   const [values, setValues] = useState({
     testimony_content: "",
     testimony_author: "",
@@ -49,7 +58,7 @@ const AddTestimony = () => {
           setFile(null)
         })
     } catch (error) {
-      console.log(error)
+      toast.error(error.message, toastOptions)
     }
   }
   return (
@@ -138,6 +147,7 @@ const AddTestimony = () => {
           </div>
         </div>
       </section>
+      <ToastContainer />
     </div>
   )
 }

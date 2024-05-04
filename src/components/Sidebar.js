@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useAuthContext } from '../hooks/useAuthContext';
 
 
@@ -25,7 +25,7 @@ const Sidebar = () => {
                         </div>
                         <div className="info">
                             <Link to="" className="d-block">
-                                {user.user.user.user.first_name }
+                                {user.user.user.user.first_name}
                             </Link>
                         </div>
                     </div>
@@ -33,103 +33,63 @@ const Sidebar = () => {
                         <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                             <li className='nav-item'>
                                 <Link to="/dashboard" className='nav-link active'>
-                                    <i className='nav-icon fas fa-tachometer-alt'/>
+                                    <i className='nav-icon fas fa-tachometer-alt' />
                                     <p>
                                         Dashboard
                                     </p>
                                 </Link>
                             </li>
+
                             <li className="nav-item">
-                                <a  className="nav-link">
-                                    <i className="nav-icon fas fa-tachometer-alt" />
-                                    <p>
-                                        Latest Updates
-                                        <i className="right fas fa-angle-left" />
-                                    </p>
-                                </a>
-                                <ul className="nav nav-treeview">
-                                    <li className="nav-item">
-                                        <Link to="/dashboard/updateList" className="nav-link active">
-                                            <i className="far fa-circle nav-icon" />
-                                            <p>View Updates</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link to="/dashboard/addUpdates" className="nav-link">
-                                            <i className="far fa-circle nav-icon" />
-                                            <p>Add updates</p>
-                                        </Link>
-                                    </li>
-                                </ul>
+                                <Link to="/dashboard/updateList" className="nav-link">
+                                    <i className="far fa-circle nav-icon" />
+                                    <p>View Updates</p>
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a  className="nav-link">
-                                    <i className="nav-icon fas fa-copy" />
-                                    <p>
-                                        Hero Section Content
-                                        <i className="fas fa-angle-left right" />
-                                    </p>
-                                </a>
-                                <ul className="nav nav-treeview">
-                                    <li className="nav-item">
-                                        <Link to="/dashboard/imageList" className="nav-link">
-                                            <i className="far fa-circle nav-icon" />
-                                            <p>Hero Section Content</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link to="/dashboard/addImage" className="nav-link">
-                                            <i className="far fa-circle nav-icon" />
-                                            <p>Add Section Content</p>
-                                        </Link>
-                                    </li>
-                                </ul>
+                                <Link to="/dashboard/addUpdates" className="nav-link">
+                                    <i className="far fa-circle nav-icon" />
+                                    <p>Add updates</p>
+                                </Link>
+                            </li>
+
+                            <li className="nav-item">
+                                <Link to="/dashboard/imageList" className="nav-link">
+                                    <i className="far fa-circle nav-icon" />
+                                    <p>Hero Section Content</p>
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a  className="nav-link">
-                                    <i className="nav-icon fas fa-chart-pie" />
-                                    <p>
-                                        Testimonies
-                                        <i className="right fas fa-angle-left" />
-                                    </p>
-                                </a>
-                                <ul className="nav nav-treeview">
-                                    <li className="nav-item">
-                                        <Link to="/dashboard/view_testimonies" className="nav-link">
-                                            <i className="far fa-circle nav-icon" />
-                                            <p>View Testimonies</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link to="/dashboard/addtestmonies" className="nav-link">
-                                            <i className="far fa-circle nav-icon" />
-                                            <p>Add Testimonies</p>
-                                        </Link>
-                                    </li>
-                                </ul>
+                                <Link to="/dashboard/addImage" className="nav-link">
+                                    <i className="far fa-circle nav-icon" />
+                                    <p>Add Section Content</p>
+                                </Link>
+                            </li>
+
+                            <li className="nav-item">
+                                <Link to="/dashboard/view_testimonies" className="nav-link">
+                                    <i className="far fa-circle nav-icon" />
+                                    <p>View Testimonies</p>
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a  className="nav-link">
-                                    <i className="nav-icon fas fa-chart-pie" />
-                                    <p>
-                                        FAQs
-                                        <i className="right fas fa-angle-left" />
-                                    </p>
-                                </a>
-                                <ul className="nav nav-treeview">
-                                    <li className="nav-item">
-                                        <Link to="/dashboard/faqsList" className="nav-link">
-                                            <i className="far fa-circle nav-icon" />
-                                            <p>View FAQs</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link to="/dashboard/addFAQs" className="nav-link">
-                                            <i className="far fa-circle nav-icon" />
-                                            <p>Add FAQs</p>
-                                        </Link>
-                                    </li>
-                                </ul>
+                                <Link to="/dashboard/addtestmonies" className="nav-link">
+                                    <i className="far fa-circle nav-icon" />
+                                    <p>Add Testimonies</p>
+                                </Link>
+                            </li>
+
+                            <li className="nav-item">
+                                <Link to="/dashboard/faqsList" className="nav-link">
+                                    <i className="far fa-circle nav-icon" />
+                                    <p>View FAQs</p>
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/dashboard/addFAQs" className="nav-link">
+                                    <i className="far fa-circle nav-icon" />
+                                    <p>Add FAQs</p>
+                                </Link>
                             </li>
                             <li className="nav-header">SETTINGS</li>
                             <li className="nav-item">

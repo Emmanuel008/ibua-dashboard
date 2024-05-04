@@ -1,14 +1,29 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from "react-toastify";
 import {url} from "../../utils/API"
+
 const TestimoniesList = () => {
+  const toastOptions = {
+    position: "top-center",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
+
   const [data, setData] = useState([])
   useEffect(() => {
     const fetchData = async () => {
-      await axios.get(`${url}testimonies`)
-        .then((res) => {
-          setData(res.data)
-        })
+      try {
+        await axios.get(`${url}testimonies`)
+          .then((res) => {
+            setData(res.data)
+          })
+      } catch (error) {
+        toast.error(error.message, toastOptions);
+      }
     }
     fetchData()
   }, [])
@@ -79,6 +94,7 @@ const TestimoniesList = () => {
           </div>
         </div>
       </section>
+      <ToastContainer />
     </div>
   )
 }

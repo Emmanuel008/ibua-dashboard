@@ -9,7 +9,6 @@ export const useLogin = () => {
     const { dispatch: authDispatch } = useAuthContext();
 
     const login = async (username, password) => {
-        console.log(username, password)
         setIsLoading(true);
         setError(null);
         try {
